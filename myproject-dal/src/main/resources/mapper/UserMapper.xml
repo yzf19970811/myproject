@@ -7,10 +7,10 @@
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="phone" jdbcType="VARCHAR" property="phone"/>
         <result column="address" jdbcType="VARCHAR" property="address"/>
-        <result column="ext_info" jdbcType="TEXT" property="extInfo"/>
+        <result column="ext_info" jdbcType="LONGVARCHAR" property="extInfo"/>
     </resultMap>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap">
-        select * from my_table_01 where id = #{id,jdbcType=INTEGER}
+        select * from my_table_01 where id = #{id,jdbcType=VARCHAR}
     </select>
 </mapper>

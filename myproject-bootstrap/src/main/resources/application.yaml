@@ -9,6 +9,6 @@ server:
 # noinspection undefined
 jdbc:
   driver: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+  url: jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true&useSSL=false
   username: root
   password: 19970811

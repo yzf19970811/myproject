@@ -35,7 +35,7 @@ public class WebController {
     @ResponseBody
     public UserVO queryUserInfo(@PathVariable("userId") String userId) {
         UserVO userVO = new UserVO();
-        BeanUtils.copyProperties(userService.queryByUserID("userId"), userVO);
+        BeanUtils.copyProperties(userService.queryByUserID(userId), userVO);
         return userVO;
     }
 }
