@@ -1,4 +1,4 @@
-package com.example.myproject;
+package com.example.myproject.service;
 
 import com.example.myproject.model.UserDTO;
 

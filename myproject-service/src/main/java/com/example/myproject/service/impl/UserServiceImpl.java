@@ -1,6 +1,6 @@
-package com.example.myproject.impl;
+package com.example.myproject.service.impl;
 
-import com.example.myproject.UserService;
+import com.example.myproject.service.UserService;
 import com.example.myproject.mapper.UserMapper;
 import com.example.myproject.model.UserDTO;
 import org.springframework.beans.BeanUtils;
