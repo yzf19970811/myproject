@@ -2,6 +2,7 @@ package com.example.myproject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ImportResource;
 
 /**
@@ -13,6 +14,13 @@ import org.springframework.context.annotation.ImportResource;
 public class MyProjectApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MyProjectApplication.class);
+
+        ConfigurableApplicationContext context = SpringApplication.run(MyProjectApplication.class);
+
+        String[] names = context.getBeanDefinitionNames();
+        for (String name : names) {
+            System.out.println("name = " + name);
+        }
+
     }
 }
