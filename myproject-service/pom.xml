@@ -37,5 +37,11 @@
             <artifactId>myproject-dal</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>myproject-integration</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

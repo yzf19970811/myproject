@@ -22,7 +22,8 @@
 		<module>myproject-dal</module>
 		<module>myproject-web</module>
 		<module>myproject-bootstrap</module>
-	</modules>
+        <module>myproject-integration</module>
+    </modules>
 
 	<properties>
 		<java.version>1.8</java.version>
