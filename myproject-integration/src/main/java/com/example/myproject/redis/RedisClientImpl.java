@@ -1,6 +1,8 @@
 package com.example.myproject.redis;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,11 +18,26 @@ public class RedisClientImpl implements RedisClient{
     @Resource
     private RedisTemplate redisTemplate;
 
+    @Autowired(required = false)
+    public void setRedisTemplate(RedisTemplate redisTemplate) {
+        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+        redisTemplate.setKeySerializer(stringRedisSerializer);
+        redisTemplate.setValueSerializer(stringRedisSerializer);
+        redisTemplate.setHashKeySerializer(stringRedisSerializer);
+        redisTemplate.setHashValueSerializer(stringRedisSerializer);
+        this.redisTemplate = redisTemplate;
+    }
+
     @Override
     public void add() {
         Boolean result = redisTemplate.hasKey("my_key");
         if (result) {
             return;
+        }
+        for (int i = 0; i < 10; i++) {
+            String key = "my_key" + System.currentTimeMillis();
+            redisTemplate.opsForValue().set(key, System.currentTimeMillis() + "value");
+            redisTemplate.expire(key, 10 * 1000, TimeUnit.MILLISECONDS);
         }
         redisTemplate.opsForValue().set("my_key","string_0001");
         redisTemplate.expire("my_key", 30 * 1000, TimeUnit.MILLISECONDS);
