@@ -1,5 +1,6 @@
-package com.example.myproject.redis;
+package com.example.myproject.redis.impl;
 
+import com.example.myproject.redis.RedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2023/5/17 22:35
  */
 @Service
-public class RedisClientImpl implements RedisClient{
+public class RedisClientImpl implements RedisClient {
 
     @Resource
     private RedisTemplate redisTemplate;
