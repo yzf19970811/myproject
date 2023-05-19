@@ -1,5 +1,6 @@
 package com.example.myproject.timer;
 
+import com.example.myproject.dubbo.DubboServiceConsumeClient;
 import com.example.myproject.redis.RedisClient;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -18,6 +19,9 @@ public class Myquartz extends QuartzJobBean {
     @Resource
     private RedisClient redisClient;
 
+    @Resource
+    private DubboServiceConsumeClient dubboServiceConsumeClient;
+
     @Override
     protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
 
@@ -26,5 +30,8 @@ public class Myquartz extends QuartzJobBean {
         redisClient.add();
         String s = redisClient.get();
         System.out.println("s = " + s);
+
+        String s1 = dubboServiceConsumeClient.sayHello();
+        System.out.println("dubbo call result = " + s1);
     }
 }

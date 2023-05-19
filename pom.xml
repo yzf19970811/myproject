@@ -31,6 +31,14 @@
 
 	<dependencyManagement>
 
+		<dependencies>
+			<dependency>
+				<groupId>com.example</groupId>
+				<artifactId>dubbo-service-provider-service</artifactId>
+				<version>20230519-SNAPSHOT</version>
+			</dependency>
+		</dependencies>
+
 	</dependencyManagement>
 
 	<build>
