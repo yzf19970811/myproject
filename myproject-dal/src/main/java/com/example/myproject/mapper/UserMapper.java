@@ -10,4 +10,6 @@ public interface UserMapper {
 
     UserDO selectByPrimaryKey(String id);
 
+    void insertSelective(UserDO userDO);
+
 }

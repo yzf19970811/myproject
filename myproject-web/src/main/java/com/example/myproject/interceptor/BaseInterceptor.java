@@ -20,6 +20,9 @@ public class BaseInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
+        String contentType = request.getContentType();
+        System.out.println("contentType = " + contentType);
+
         String requestURI = request.getRequestURI();
         System.out.println("requestURI = " + requestURI);
 

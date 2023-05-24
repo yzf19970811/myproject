@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
 </head>
+
 <body>
-    <h1>welcome to my spring project!!!!</h1>
+<h1>welcome to my spring project!!!!</h1>
+<button click="http">
+    POST
+</button>
 </body>
+<script>
+    var baseUrl = "http://localhost:8080/main/user";
+    function http({ url = baseUrl, type = "post", dataType = "json", data = {
+        name: "yuzhifa",
+        phone: "18951820637",
+        address: "杭州市西湖区",
+        extInfo: "这是一个大帅比"
+    } }) {
+        $.ajax({
+            url,
+            type,
+            dataType,
+            data,
+            success: function (res) {
+                console.log(res)
+            }
+        })
+    }
+</script>
+
 </html>

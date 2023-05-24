@@ -18,9 +18,9 @@ public class MyProjectApplication {
         ConfigurableApplicationContext context = SpringApplication.run(MyProjectApplication.class);
 
         String[] names = context.getBeanDefinitionNames();
-        for (String name : names) {
-            System.out.println("name = " + name);
-        }
+//        for (String name : names) {
+//            System.out.println("name = " + name);
+//        }
 
     }
 }

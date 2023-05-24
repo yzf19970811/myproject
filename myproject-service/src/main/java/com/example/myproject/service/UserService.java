@@ -10,4 +10,6 @@ public interface UserService {
 
     UserDTO queryByUserID(String UserId);
 
+    void addUserInfo(UserDTO userDTO);
+
 }

@@ -1,12 +1,11 @@
 package com.example.myproject.controller;
 
+import com.example.myproject.model.UserDTO;
 import com.example.myproject.service.UserService;
 import com.example.myproject.vo.UserVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -27,9 +26,9 @@ public class WebController {
         return "hello world!!!";
     }
 
-    @RequestMapping("/index")
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index() {
-        return "/index.html";
+        return "/static/index.html";
     }
 
     @RequestMapping("/user/{userId}")
@@ -38,5 +37,15 @@ public class WebController {
         UserVO userVO = new UserVO();
         BeanUtils.copyProperties(userService.queryByUserID(userId), userVO);
         return userVO;
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin(origins = "*")
+    public void addUserInfo(@RequestBody UserVO userVO) {
+        System.out.println("userVO = " + userVO.toString());
+        UserDTO userDTO = new UserDTO();
+        BeanUtils.copyProperties(userVO, userDTO);
+        userService.addUserInfo(userDTO);
     }
 }
