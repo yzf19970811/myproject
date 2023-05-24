@@ -6,6 +6,10 @@ package com.example.myproject.redis;
  */
 public interface RedisClient {
 
+    void addCsrfToken(String key, String value);
+
+    String getCsrfToken(String key);
+
     void add();
 
     String get();

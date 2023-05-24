@@ -30,6 +30,17 @@ public class RedisClientImpl implements RedisClient {
     }
 
     @Override
+    public void addCsrfToken(String key, String value) {
+        redisTemplate.opsForValue().set(key,value);
+        redisTemplate.expire(key, 10, TimeUnit.MINUTES);
+    }
+
+    @Override
+    public String getCsrfToken(String key) {
+        return (String) redisTemplate.opsForValue().get(key);
+    }
+
+    @Override
     public void add() {
         Boolean result = redisTemplate.hasKey("my_key");
         if (result) {

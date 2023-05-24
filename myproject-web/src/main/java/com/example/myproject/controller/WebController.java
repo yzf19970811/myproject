@@ -1,4 +1,4 @@
-package com.example.myproject;
+package com.example.myproject.controller;
 
 import com.example.myproject.service.UserService;
 import com.example.myproject.vo.UserVO;
