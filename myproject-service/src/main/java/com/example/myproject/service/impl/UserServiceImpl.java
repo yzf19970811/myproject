@@ -1,14 +1,13 @@
 package com.example.myproject.service.impl;
 
-import com.example.myproject.model.UserDO;
-import com.example.myproject.service.UserService;
 import com.example.myproject.mapper.UserMapper;
+import com.example.myproject.model.UserDO;
 import com.example.myproject.model.UserDTO;
+import com.example.myproject.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.UUID;
 
 /**
  * @author kyu.yzf
@@ -31,7 +30,7 @@ public class UserServiceImpl implements UserService {
     public void addUserInfo(UserDTO userDTO) {
         UserDO userDO = new UserDO();
         BeanUtils.copyProperties(userDTO, userDO);
-        userDO.setId(UUID.randomUUID().toString());
+        userDO.setId(String.valueOf(System.currentTimeMillis()));
         userMapper.insertSelective(userDO);
     }
 }

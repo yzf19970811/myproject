@@ -10,13 +10,11 @@
         <result column="ext_info" jdbcType="LONGVARCHAR" property="extInfo"/>
     </resultMap>
 
-    <insert id="insertSelective">
+    <insert id="insertSelective" parameterType="com.example.myproject.model.UserDO">
         insert into
-            my_table_01
-        set
-            (id,name,phone,address,ext_info)
+            my_table_01 (id,name,phone,address,ext_info)
         values
-            (id,name,phone,address,extInfo)
+            (#{id},#{name},#{phone},#{address},#{extInfo})
     </insert>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap">

@@ -26,9 +26,9 @@ public class WebController {
         return "hello world!!!";
     }
 
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    @RequestMapping
     public String index() {
-        return "/static/index.html";
+        return "index";
     }
 
     @RequestMapping("/user/{userId}")

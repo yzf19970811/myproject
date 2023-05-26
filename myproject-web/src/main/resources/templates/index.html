@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.js"></script>
+</head>
+
+<body>
+<h1>welcome to my spring project!!!!</h1>
+<button onclick="http()">
+    POST
+</button>
+</body>
+<script>
+    function http() {
+        var data = {
+                "name": "yuzhifa",
+                "phone": "18951820637",
+                "address": "杭州市西湖区",
+                "extInfo": "这是一个大帅比"
+            };
+        $.ajax({
+            url: "http://localhost:8080/main/user",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            success: function (res) {
+                console.log(res);
+            }
+        })
+    }
+</script>
+
+</html>

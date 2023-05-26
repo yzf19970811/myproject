@@ -28,7 +28,7 @@ public class QuartzConfig {
         //ScheduleBuilder<? extends Trigger> schdule=CronScheduleBuilder.cronSchedule("0 0 0 0 0 0");
         //如CronScheduleBuilder.cronSchedule("0 0 0 1 2 ？")这就代表了2月的第一天0秒0分0时 我们还可以配*代表任意;
         //还可以如CronScheduleBuilder.cronSchedule("0/15 * * * * ？")代表每隔15秒执行一次
-        ScheduleBuilder schdule= CronScheduleBuilder.cronSchedule("0/0 1 * * * ?") ;
+        ScheduleBuilder schdule= CronScheduleBuilder.cronSchedule("0/15 * * * * ?") ;
         //forJob就时绑定工作明细
         return TriggerBuilder.newTrigger().forJob(jobDetail()).withSchedule(schdule).build();
     }
