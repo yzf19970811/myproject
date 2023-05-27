@@ -1,7 +1,8 @@
 package com.example.myproject.dubbo.impl;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.example.myproject.dubbo.DubboServiceConsumeClient;
-import com.example.provider.impl.DubboProvideServiceImpl;
+import com.example.provider.DubboProvideService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,9 +13,12 @@ import org.springframework.stereotype.Service;
 public class DubboServiceConsumeClientImpl implements DubboServiceConsumeClient {
 
 
+    @Reference(version = "1.0.0")
+    private DubboProvideService dubboProvideService;
+
     @Override
     public String sayHello() {
-        return new DubboProvideServiceImpl().sayHello();
+        return dubboProvideService.sayHello();
     }
 
 }

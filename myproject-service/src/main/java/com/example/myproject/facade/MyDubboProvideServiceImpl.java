@@ -8,7 +8,7 @@ import com.example.myproject.service.MyDubboProvideService;
  * @author kyu.yzf
  * @date 2023/5/27 10:28
  */
-@Service(version = "1.0.0")
+//@Service(version = "1.0.0")
 public class MyDubboProvideServiceImpl implements MyDubboProvideService {
 
     @Override

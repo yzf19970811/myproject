@@ -18,6 +18,11 @@
     <dependencies>
 
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.example</groupId>
             <artifactId>dubbo-service-provider-service</artifactId>
         </dependency>
