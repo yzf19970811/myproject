@@ -2,6 +2,7 @@ package com.example.myproject.timer;
 
 import com.example.myproject.dubbo.DubboServiceConsumeClient;
 import com.example.myproject.redis.RedisClient;
+import com.example.myproject.rocketmq.RocketMqClient;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
@@ -22,6 +23,9 @@ public class Myquartz extends QuartzJobBean {
     @Resource
     private DubboServiceConsumeClient dubboServiceConsumeClient;
 
+    @Resource
+    private RocketMqClient rocketMqClient;
+
     @Override
     protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
 
@@ -33,5 +37,8 @@ public class Myquartz extends QuartzJobBean {
 
         String s1 = dubboServiceConsumeClient.sayHello();
         System.out.println("dubbo call result = " + s1);
+
+        rocketMqClient.sendMsg();
+        System.out.println("rocketmq已启动");
     }
 }

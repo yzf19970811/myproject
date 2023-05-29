@@ -1,6 +1,6 @@
 
 server:
-  port: 8080
+  port: 8087
 
 spring:
   application:
@@ -21,3 +21,9 @@ jdbc:
   url: jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true&useSSL=false
   username: root
   password: 19970811
+
+# rocket mq
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    group: group1
