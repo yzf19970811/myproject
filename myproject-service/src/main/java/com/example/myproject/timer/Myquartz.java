@@ -27,9 +27,9 @@ public class Myquartz extends QuartzJobBean {
 
         System.out.println("hhhhh我是quartz");
 
-        redisClient.add();
-        String s = redisClient.get();
-        System.out.println("s = " + s);
+//        redisClient.add();
+//        String s = redisClient.get();
+//        System.out.println("s = " + s);
 
         String s1 = dubboServiceConsumeClient.sayHello();
         System.out.println("dubbo call result = " + s1);
