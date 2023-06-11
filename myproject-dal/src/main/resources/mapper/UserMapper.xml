@@ -20,4 +20,8 @@
     <select id="selectByPrimaryKey" resultMap="BaseResultMap">
         select * from my_table_01 where id = #{id,jdbcType=VARCHAR}
     </select>
+
+    <select id="selectAll" resultType="com.example.myproject.model.UserDO">
+        select * from my_table_01 order By `id` asc;
+    </select>
 </mapper>
