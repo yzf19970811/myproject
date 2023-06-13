@@ -22,9 +22,10 @@
                 "extInfo": "这是一个大帅比"
             };
         $.ajax({
-            url: "http://localhost:8080/main/user",
+            url: "http://localhost:8080/main/http",
             type: "POST",
             contentType: "application/json; charset=utf-8",
+            dataType: "json",
             data: JSON.stringify(data),
             success: function (res) {
                 console.log(res);

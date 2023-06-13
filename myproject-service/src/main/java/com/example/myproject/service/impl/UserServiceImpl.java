@@ -8,6 +8,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author kyu.yzf
@@ -32,5 +34,17 @@ public class UserServiceImpl implements UserService {
         BeanUtils.copyProperties(userDTO, userDO);
         userDO.setId(String.valueOf(System.currentTimeMillis()));
         userMapper.insertSelective(userDO);
+    }
+
+    @Override
+    public List<UserDTO> queryUserList() {
+        List<UserDO> userDOList = userMapper.selectAll();
+        List<UserDTO> userDTOList = new ArrayList<>();
+        userDOList.forEach(userDO -> {
+            UserDTO userDTO = new UserDTO();
+            BeanUtils.copyProperties(userDO, userDTO);
+            userDTOList.add(userDTO);
+        });
+        return userDTOList;
     }
 }
