@@ -78,6 +78,12 @@
 			</dependency>
 
 			<dependency>
+				<groupId>org.redisson</groupId>
+				<artifactId>redisson</artifactId>
+				<version>3.8.0</version>
+			</dependency>
+
+			<dependency>
 				<groupId>com.example</groupId>
 				<artifactId>dubbo-service-provider-service</artifactId>
 				<version>20230519-SNAPSHOT</version>
