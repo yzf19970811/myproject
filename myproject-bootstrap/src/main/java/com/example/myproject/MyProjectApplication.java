@@ -14,7 +14,7 @@ import java.util.Objects;
  * @date 2023/4/13 22:05
  */
 @SpringBootApplication
-@EnableDubbo
+//@EnableDubbo
 @ImportResource(locations={"classpath*:spring/*.xml"})
 public class MyProjectApplication {
 

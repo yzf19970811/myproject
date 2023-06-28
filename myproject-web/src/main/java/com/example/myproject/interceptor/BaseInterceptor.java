@@ -30,42 +30,36 @@ public class BaseInterceptor implements HandlerInterceptor {
 //    @Resource
 //    private RedissonClient redissonClient;
 
+    private static RedissonClient redissonClient = null;
+
+    static {
+        Config config = new Config();
+        config.useSingleServer().setAddress("redis://127.0.0.1:6379");
+
+        redissonClient = Redisson.create(config);
+    }
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
-        String contentType = request.getContentType();
-        System.out.println("contentType = " + contentType);
-
-        String requestURI = request.getRequestURI();
-        System.out.println("requestURI = " + requestURI);
-
-        StringBuffer requestURL = request.getRequestURL();
-        System.out.println("requestURL = " + requestURL);
-
-        String pathInfo = request.getPathInfo();
-        System.out.println("pathInfo = " + pathInfo);
-
-        String contextPath = request.getContextPath();
-        System.out.println("contextPath = " + contextPath);
 
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         MethodParameter[] methodParameters = handlerMethod.getMethodParameters();
         Arrays.stream(methodParameters).forEach(item -> System.out.println("item = " + item));
 
         Class<?> beanType = handlerMethod.getBeanType();
-        System.out.println("beanType = " + beanType);
+//        System.out.println("beanType = " + beanType);
 
         Method method = handlerMethod.getMethod();
         String name = method.getName();
-        System.out.println("name = " + name);
+//        System.out.println("name = " + name);
 
 
         Map pathVariableMapping = (Map) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
         String userId = (String) pathVariableMapping.get("userId");
-        System.out.println("userId = " + userId);
+//        System.out.println("userId = " + userId);
 
-        boolean limitResult = checkLimit("mockKey");
-        System.out.println("limitResult = " + limitResult);
+        boolean limitResult = checkLimit("mockKey3");
+//        System.out.println("limitResult = " + limitResult);
 
         if (!limitResult) {
             PrintWriter writer = response.getWriter();
@@ -76,16 +70,15 @@ public class BaseInterceptor implements HandlerInterceptor {
     }
 
     private boolean checkLimit(String cacheKey) {
-
-        Config config = new Config();
-        config.useSingleServer().setAddress("redis://127.0.0.1:6379");
-
-        RedissonClient redissonClient = Redisson.create(config);
-
         System.out.println("限流逻辑命中");
         RRateLimiter rateLimiter = redissonClient.getRateLimiter(cacheKey);
-        rateLimiter.trySetRate(RateType.OVERALL, 10, 1, RateIntervalUnit.MINUTES);
+        System.out.println("rateLimiter = " + rateLimiter);
+        if (!rateLimiter.isExists()) {
+            rateLimiter.trySetRate(RateType.OVERALL, 20, 1, RateIntervalUnit.MINUTES);
+        }
         boolean result = rateLimiter.tryAcquire(1);
+        boolean delete = rateLimiter.delete();
+        System.out.println("delete = " + delete);
         return result;
     }
 }

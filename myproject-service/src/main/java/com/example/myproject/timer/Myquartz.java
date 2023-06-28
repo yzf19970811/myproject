@@ -29,16 +29,16 @@ public class Myquartz extends QuartzJobBean {
     @Override
     protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
 
-        System.out.println("hhhhh我是quartz");
+//        System.out.println("hhhhh我是quartz");
 
 //        redisClient.add();
 //        String s = redisClient.get();
 //        System.out.println("s = " + s);
 
-        String s1 = dubboServiceConsumeClient.sayHello();
-        System.out.println("dubbo call result = " + s1);
+//        String s1 = dubboServiceConsumeClient.sayHello();
+//        System.out.println("dubbo call result = " + s1);
 
-        rocketMqClient.sendMsg();
-        System.out.println("rocketmq已启动");
+//        rocketMqClient.sendMsg();
+//        System.out.println("rocketmq已启动");
     }
 }

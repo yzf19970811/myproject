@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  * @date 2023/5/28 22:47
  */
 @Service
-@RocketMQMessageListener(consumerGroup = "group1",topic = "TestTopic")
+//@RocketMQMessageListener(consumerGroup = "group1",topic = "TestTopic")
 public class RocketMqClientImpl implements RocketMqClient, RocketMQListener<String> {
 
     @Resource
@@ -21,7 +21,7 @@ public class RocketMqClientImpl implements RocketMqClient, RocketMQListener<Stri
 
     @Override
     public void sendMsg() {
-        rocketMQTemplate.convertAndSend("TestTopic","这是一则发送过去的消息");
+//        rocketMQTemplate.convertAndSend("TestTopic","这是一则发送过去的消息");
     }
 
     @Override
